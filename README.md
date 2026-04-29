@@ -1,65 +1,132 @@
-### SwarSetu
+# **SwarSetu**
 
-**SwarSetu** is a Deep Learning-powered recognition platform designed to bridge communication gaps by interpreting **Sign Language gestures** in real-time. The project utilizes Computer Vision and Convolutional Neural Networks (CNN) to translate hand gestures—representing alphabets, numbers, and common signs—into digital text.
+## **Project Overview**
 
-The platform is designed to handle a vast and diverse dataset, ensuring that a wide range of hand gestures are accurately recognized and categorized for seamless interaction.
+**SWar (SwarSetu)** is an intelligent real-time **Sign Language Recognition and Communication Platform** designed to bridge the communication gap between sign language users and verbal communication users. The system captures hand gestures through a webcam, detects the performed sign using **AI-powered gesture recognition**, and instantly converts it into **text and speech output**.
 
----
-
-### Features
-
-**Multi-Category Gesture Recognition**
-* Identifies a massive range of **49 unique classes**, including the full English alphabet (A-Z), numbers (0-9), and specific gestures like "fist," "paper," "scissors," and "thumbs".
-* Processes a large-scale dataset of over **107,000 images**.
-
-**Deep Learning Integration**
-* Implements a custom-built **Convolutional Neural Network (CNN)** optimized for image classification.
-* Achieves high performance with a **91% training accuracy** and a **96% validation accuracy**.
-
-**Real-Time Image Processing**
-* Utilizes a data generator to process images in batches (size 64) with automated resizing to **$64 \times 64$ pixels**.
-* Normalizes pixel values for faster and more stable model convergence.
-
-**Scalable Dataset Pipeline**
-* Features a robust scanning system that automatically cleans and organizes labels from complex directory structures, ignoring irrelevant folders like 'test' or 'valid'.
+The platform focuses on **accessibility, inclusivity, and seamless human-computer interaction**, enabling users to communicate naturally using hand gestures without requiring specialized devices.
 
 ---
 
-### Technology Stack
+## **Problem Statement**
 
-**Development Environment**
-* **Google Colab**: Used for high-performance GPU-accelerated training.
-* **Google Drive**: Integrated for large-scale dataset storage and management.
+People who rely on sign language often face communication barriers in daily interactions due to limited understanding of sign language among the general public. Existing solutions may require complex setups or work poorly in varied environments.
 
-**Deep Learning & Machine Learning**
-* **TensorFlow / Keras**: The primary framework for building, training, and saving the sequential CNN model.
-* **Scikit-Learn**: Used for encoding labels and splitting data into training and validation sets.
+**SWar solves this by providing:**
 
-**Computer Vision & Data Handling**
-* **OpenCV (cv2)**: For real-time image reading, resizing, and preprocessing.
-* **NumPy**: For efficient array manipulation and handling image data tensors.
+* Real-time gesture recognition
+* Instant text conversion
+* Voice output for spoken communication
+* Easy camera-based interaction
+* Fast and accessible UI
 
 ---
 
-### Model Architecture (CNN)
+## **Key Modules**
 
-The system uses a `Sequential` model with the following layers to extract and learn gesture patterns:
+### **1) Live Detection Module**
 
-| Layer Type | Configuration | Purpose |
-| :--- | :--- | :--- |
-| **Input** | $64 \times 64 \times 3$ | Accepts RGB images of $64 \times 64$ pixels. |
-| **Conv2D** | 32, 64, & 128 filters | Extracts features ranging from simple edges to complex gesture shapes. |
-| **MaxPooling2D** | $2 \times 2$ | Reduces spatial dimensions to focus on the most important visual features. |
-| **Flatten** | 1D Vector | Converts 2D feature maps into a single numerical vector for the learning phase. |
-| **Dense** | 128 units (ReLU) | The "thinking" layer that learns patterns between features and labels. |
-| **Dropout** | 0.5 (50%) | Prevents overfitting by randomly deactivating neurons during training. |
-| **Output** | 49 units (Softmax) | Provides a probability distribution across the 49 possible gesture classes. |
+* Captures hand gestures using webcam
+* Detects hand position in real-time
+* Uses ROI (Region of Interest) box for stable recognition
+* Ensures proper hand alignment for better prediction
+
+### **2) Sign Recognition Engine**
+
+* Recognizes:
+
+  * **A–Z Alphabets**
+  * **0–9 Numbers**
+  * **Common Sentences / Gestures**
+* Confidence-based prediction system
+* Alternative prediction suggestions
+* Stable-frame detection for accurate results
+
+### **3) Text Conversion Module**
+
+* Converts detected sign into readable text
+* Maintains transcript history
+* Allows sentence building from multiple signs
+
+### **4) Voice Output Module**
+
+* Uses speech synthesis
+* Converts translated text into voice
+* Enables natural communication
+
+### **5) Learning / Gallery Module**
+
+* Shows supported signs visually
+* Helps users learn gestures
+* Improves accessibility for beginners
+
+### **6) User Interface Module**
+
+* Interactive modern UI
+* Live camera feed
+* Detection feedback messages
+* Responsive web design
+* Theme support
 
 ---
 
-### Project Performance
+## **Technology Stack**
 
-The model was trained iteratively, showing consistent improvement across epochs:
-* **Initial Learning:** Started at ~76% accuracy after just 50 steps.
-* **Optimization:** Increased to ~88% after further training steps.
-* **Final Result:** Concluded with a **96% validation accuracy**, demonstrating high reliability in recognizing unseen gesture data.
+### **Frontend**
+
+* React + TypeScript
+* Vite
+* Tailwind CSS
+* ShadCN UI
+
+### **AI / Detection**
+
+* TensorFlow.js
+* MediaPipe Hand Landmarks
+* Custom Geometric Sign Classifier
+
+### **Browser APIs**
+
+* Web Camera API
+* Speech Synthesis API
+
+---
+
+## **Core Features**
+
+✅ Real-time sign detection
+
+✅ Sign → Text conversion
+
+✅ Text → Voice conversion
+
+✅ A–Z sign recognition
+
+✅ 0–9 number recognition
+
+✅ Fast prediction (<100ms latency)
+
+✅ Live transcript panel
+
+✅ Beginner-friendly sign gallery
+
+✅ Responsive design
+
+---
+
+## **Objective**
+
+The main objective of **SWar** is to create a **smart communication bridge** that transforms hand gestures into understandable speech and text, making communication more inclusive for individuals with hearing or speech disabilities.
+
+---
+
+## **Future Scope**
+
+* Sentence auto-correction
+* Regional language voice output
+* Mobile app version
+* Two-way communication mode (Voice → Sign)
+* More gesture dataset expansion
+* Personalized learning mode
+
+---
